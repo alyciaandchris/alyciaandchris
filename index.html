@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly & Monthly Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+    <!-- 🌸 Elegant Expanding Navigation Menu -->
+    <nav class="nav-menu">
+        <button class="menu-button">☰</button>
+        <div class="menu-content">
+            <a href="home.html">🏠 Home</a>
+            <a href="memories.html">📸 Memories</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Planner</h1>
+        
+        <!-- 🌸 Button Container for Side-by-Side Buttons -->
+        <div class="button-container">
+            <a href="home.html" class="home-button">🏠 Back to Home</a>
+            <button id="toggleView">Switch to Weekly View</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Weekly View (Initially Hidden) -->
+        <div class="week-view" style="display: none;">
+            <div class="week">
+                <div class="day" id="sunday"><h2>Sunday</h2><ul></ul></div>
+                <div class="day" id="monday"><h2>Monday</h2><ul></ul></div>
+                <div class="day" id="tuesday"><h2>Tuesday</h2><ul></ul></div>
+                <div class="day" id="wednesday"><h2>Wednesday</h2><ul></ul></div>
+                <div class="day" id="thursday"><h2>Thursday</h2><ul></ul></div>
+                <div class="day" id="friday"><h2>Friday</h2><ul></ul></div>
+                <div class="day" id="saturday"><h2>Saturday</h2><ul></ul></div>
+            </div>
+        </div>
+
+        <!-- Monthly View (Default) -->
+        <div class="month-view" style="display: grid;">
+            <div class="day-labels"></div>
+            <div class="month-grid"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>I love you!</p>
+    </footer>
+
+</body>
+</html>

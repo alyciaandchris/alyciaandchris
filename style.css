@@ -1,0 +1,440 @@
+/* 🌸 Coquette-Inspired Aesthetic */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500&family=Quicksand:wght@400;600&display=swap');
+
+/* Apply a solid background color to the entire page */
+body {
+    background-color: #ffdde1; /* Use a single color for the background */
+    font-family: 'Playfair Display', serif;
+    color: #7b3645;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Center the content on the homepage */
+.homepage-container {  /* Add a container for the homepage content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Make the container take up full viewport height */
+}
+
+/* ✨ Title Styling */
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: #b0234f;
+    text-shadow: 2px 2px 4px rgba(255, 153, 204, 0.5);
+    margin-top: 15px;
+}
+
+/* 💖 Weekly & Monthly Toggle Button */
+#toggleView {
+    background-color: #ff85a2;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    border-radius: 30px;
+    box-shadow: 2px 4px 6px rgba(255, 105, 180, 0.3);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+#toggleView:hover {
+    background-color: #ff6181;
+    transform: scale(1.05);
+}
+
+/* 🗓️ Weekly & Monthly View Styling */
+.week-view, .month-view {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+/* 🌷 Day Labels for Monthly View */
+.day-labels {
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #d10058;
+}
+
+/* 📆 Monthly Grid */
+.month-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    padding: 10px;
+}
+
+/* 📅 Individual Days */
+.month-day {
+    background: rgba(255, 223, 229, 0.9);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 2px 3px 6px rgba(255, 182, 193, 0.4);
+    font-size: 1rem;
+    text-align: left;
+    position: relative;
+}
+
+.month-day.today {
+    background: rgba(255, 182, 193, 0.8);
+    border: 2px solid #ff6699;
+    font-weight: bold;
+}
+
+/* 🌸 Weekly View - Center Alignment */
+.week-view {
+    display: flex;
+    justify-content: center; /* Centers the content */
+    align-items: flex-start;
+    gap: 15px; /* Adds spacing between days */
+    padding: 10px;
+    flex-wrap: nowrap; /* Prevents unwanted wrapping */
+    max-width: 90%;
+    margin: auto; /* Centers it horizontally */
+}
+
+
+/* 📌 Weekly View Days */
+.week-day {
+    background: rgba(255, 223, 229, 0.9);
+    border-radius: 15px;
+    padding: 15px;
+    width: 13%; /* Ensures the boxes stay correctly sized */
+    box-shadow: 2px 3px 6px rgba(255, 105, 180, 0.4);
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+}
+
+/* Prevents unwanted expansion when toggling */
+.week-day:not(:empty) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Fixes auto-stretching of weekly view */
+.week-view > div {
+    flex-grow: 0; /* Prevents expansion */
+    max-width: 13%; /* Maintains proper width */
+}
+
+/* 🎀 Event Cards */
+.event-card {
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 2px 3px 6px rgba(255, 105, 180, 0.3);
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* 🎀 Events Styling */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #ffe0ec;
+    border-radius: 10px;
+    padding: 8px;
+    margin: 5px 0;
+    box-shadow: 1px 2px 4px rgba(255, 182, 193, 0.3);
+}
+
+/* 🎀 Event Links */
+a {
+    color: #b0234f;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #ff3b6e;
+}
+
+/* 💕 Edit Button */
+button {
+    background: #ff6699;
+    border: none;
+    color: white;
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Quicksand', sans-serif;
+    box-shadow: 2px 3px 6px rgba(255, 105, 180, 0.3);
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+    background: #ff3b6e;
+    transform: scale(1.1);
+}
+
+/* 🎀 Edit Button with Icon */
+.edit-button {
+    background: #ff6699;
+    color: white;
+    font-size: 1rem;
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+}
+
+.edit-button img {
+    width: 16px;
+    height: 16px;
+}
+
+/* 🎀 Popup Styling */
+.popup {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+/* 💕 Cute Footer */
+footer {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.5rem;
+    color: #d10058;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+
+/* DONT DELETE FOR NOW */
+
+
+
+/* 🎀 Fix Menu Button Position */
+.menu-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+/* 🎀 Menu Button Styling */
+#menu-button {
+    background-color: #ff85a2;
+    color: white;
+    border: none;
+    padding: 12px 15px;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+#menu-button:hover {
+    background-color: #ff6181;
+    transform: scale(1.1);
+}
+
+/* 🎀 Dropdown Menu */
+.nav-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    min-width: 150px;
+}
+
+.nav-menu a {
+    display: block;
+    text-decoration: none;
+    padding: 8px 15px;
+    color: #b0234f;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.nav-menu a:hover {
+    background: #ffdde1;
+    color: #ff3b6e;
+}
+
+/* 🎀 Ensure menu opens correctly */
+.menu-container.active .nav-menu {
+    display: block;
+}
+
+/* 🎀 Homepage Buttons - Adjusted Position */
+/* 🎀 Buttons Section */
+.homepage-buttons {
+    margin-top: -100px; /* Reduce this if buttons are too far down */
+}
+
+
+
+.homepage-buttons .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ff85a2; /* Soft pink */
+    color: white;
+    font-size: 1.2rem;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 2px 4px 6px rgba(255, 105, 180, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.homepage-buttons .button:hover {
+    background-color: #ff6181;
+    transform: scale(1.1);
+}
+
+/* 🎀 Subtitle Styling */
+/* 🎀 Subtitle Styling */
+.subtitle {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 10px auto 5px; /* Reduced bottom margin to bring buttons closer */
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* 🏠 Back to Home Button */
+.home-button {
+    display: inline-block;
+    background-color: #ff85a2;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 30px;
+    box-shadow: 2px 3px 6px rgba(255, 105, 180, 0.3);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.home-button:hover {
+    background-color: #ff6181;
+    transform: scale(1.05);
+}
+
+/* Add a hover effect for a cute touch */
+.memory-display img:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+
+
+/* TIMELINE CODE */
+
+
+/* ... (your existing CSS) ... */
+
+/* ... (your existing CSS) ... */
+
+/* Timeline Styles */
+.timeline {
+    width: 80%;
+    margin: 30px auto 0;
+    position: relative;
+}
+
+.timeline-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.timeline-item {
+    background-color: #ffcce0; /* Light pink background */
+    border-radius: 25px; /* Bubble shape */
+    padding: 15px 25px; /* Padding for the bubble */
+    margin: 10px; /* Spacing between bubbles */
+    cursor: pointer;
+    box-shadow: 2px 3px 6px rgba(255, 182, 193, 0.4); /* Soft shadow */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+    display: inline-block; /* Ensure items are inline */
+}
+
+.timeline-item:hover {
+    transform: translateY(-5px); /* Lift on hover */
+    box-shadow: 3px 4px 8px rgba(255, 182, 193, 0.5); /* Stronger shadow on hover */
+}
+
+/* Remove or comment out the timeline-year rule */
+/*.timeline-year {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #d10058;
+}*/
+
+.timeline-label {
+    font-size: 1.1em;
+}
+
+/* ... (your existing CSS) ... */
+
+
+
+
+
+/* Memory Display Area */
+/* ... (your existing CSS) ... */
+
+/* Memory Display Area */
+/* ... (your existing CSS) ... */
+
+/* Memory Display Area */
+.memory-display {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    margin-top: 30px;
+    padding: 20px;
+    align-items: center; /* Vertically center items */
+}
+
+.memory-display img {
+    max-width: 20%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.caption {
+    font-size: 1.1em;
+    line-height: 1.6;
+    text-align: left; /* Align caption text to the left */
+}
