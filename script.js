@@ -5,44 +5,35 @@ document.addEventListener("DOMContentLoaded", () => {
     const dayLabelsContainer = document.querySelector(".day-labels");
     const monthGrid = document.querySelector(".month-grid");
 
-    // Event Schedule (Editable) - Load from localStorage or use default
-    // Default Event Schedule
+    // ✅ Event Schedule - Now automatically updates when you modify this object!
     const defaultEvents = {
         "2025-03-03": [{ name: "Dinner Date", time: "5:00 PM", location: "Lal Mirch" }],
-        "2025-03-04": [
-            { name: "Apartment cleanup", time: "2:00 PM", location: "Yours" },
-            { name: "Gym", time: "2:00 PM", location: "Rec Cen" }
-        ],
-        "2025-03-07": [{ name: "Weekly Talk", time: "5:00 PM", location: "Mine" }], 
+        "2025-03-04": [{ name: "Apartment cleanup", time: "2:00 PM", location: "6512 Segovia" }],
+        "2025-03-05": [{ name: "Gym", time: "8:00 AM", location: "Rec Cen" }],
+        "2025-03-07": [{ name: "Weekly Talk", time: "5:00 PM", location: "851 Camino Pescadero" }], 
         "2025-03-08": [{ name: "Study Session", time: "12:00 PM", location: "Library" }],
-        "2025-03-12": [{ name: "Cooking You Dinner", time: "6:00 PM", location: "My place" }],
-        "2025-03-14": [{ name: "Weekly Talk", time: "5:00 PM", location: "My place" }],
+        "2025-03-12": [{ name: "Cooking You Dinner", time: "6:00 PM", location: "851 Camino Pescadero" }],
+        "2025-03-14": [{ name: "Weekly Talk", time: "5:00 PM", location: "851 Camino Pescadero" }],
         "2025-03-15": [{ name: "Date Night", time: "5:30 PM", location: "Color Me Mine" }],
         "2025-03-16": [{ name: "Study Session", time: "10:00 AM", location: "Library" }],
-        "2025-03-17": [{ name: "Gym", time: "12:00 PM", location: "Rec Center" }],
+        "2025-03-17": [{ name: "Gym", time: "12:00 PM", location: "Rec Cen" }],
         "2025-03-18": [{ name: "Study Session", time: "10:00 AM", location: "Library" }],
         "2025-03-19": [{ name: "Dinner Date", time: "6:00 PM", location: "Empty Bowl" }],
         "2025-03-20": [{ name: "Flight", time: "10:30 AM", location: "SBA" }],
-        "2025-03-21": [{ name: "Weekly Talk on FaceTime", time: "5:00 PM", location: "FT" }],
-        "2025-03-28": [{ name: "Weekly Talk on FaceTime", time: "5:00 PM", location: "FT" }]
+        "2025-03-21": [{ name: "Weekly Talk", time: "5:00 PM", location: "FaceTime" }],
+        "2025-03-22": [{ name: "Movie", time: "4:00 PM", location: "Teleparty" }],
+        "2025-03-24": [{ name: "Movie", time: "4:00 PM", location: "Teleparty" }],
+        "2025-03-26": [{ name: "Movie", time: "4:00 PM", location: "Teleparty" }],
+        "2025-03-28": [{ name: "Weekly Talk", time: "5:00 PM", location: "FaceTime" }]
     };
-    
-    // Load from localStorage or use defaults
-    let eventSchedule = JSON.parse(localStorage.getItem("eventSchedule"));
-
-    // If localStorage is empty or missing events, update it
-    if (!eventSchedule || Object.keys(eventSchedule).length === 0) {
-        localStorage.setItem("eventSchedule", JSON.stringify(defaultEvents));
-        eventSchedule = defaultEvents;
-    }
 
     /*** 🗓️ Function to Populate the Weekly Planner ***/
     function populateWeeklyPlanner() {
         let today = new Date();
-        let currentDayOfWeek = today.getDay(); // 0 (Sunday) to 6 (Saturday)
-        let currentDate = today.getDate();
-        let currentMonth = today.getMonth();
         let currentYear = today.getFullYear();
+        let currentMonth = today.getMonth();
+        let currentDate = today.getDate();
+        let currentDayOfWeek = today.getDay(); // 0 (Sunday) to 6 (Saturday)
     
         let daysOfWeek = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
     
@@ -55,8 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
             let list = dayElement.querySelector("ul");
             list.innerHTML = "";
     
-            if (eventSchedule[formattedDate]) {
-                eventSchedule[formattedDate].forEach((event, index) => {
+            if (defaultEvents[formattedDate]) {
+                defaultEvents[formattedDate].forEach(event => {
                     let listItem = document.createElement("li");
                     let calendarLink = generateGoogleCalendarLink(event.name, formattedDate, event.time, event.location);
                     listItem.innerHTML = `
@@ -64,7 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             ${event.name} - ${event.time}
                         </a>
                         <br><small>📍 ${event.location}</small>
-                        <button onclick="editEvent('${formattedDate}', ${index})">✏️ Edit</button>
                     `;
                     list.appendChild(listItem);
                 });
@@ -75,8 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
     /*** 📆 Function to Populate the Monthly Planner ***/
     function populateMonthlyPlanner() {
         const today = new Date();
-        const currentMonth = today.getMonth();
         const currentYear = today.getFullYear();
+        const currentMonth = today.getMonth();
 
         const firstDayOfMonth = new Date(currentYear, currentMonth, 1);
         const lastDayOfMonth = new Date(currentYear, currentMonth + 1, 0);
@@ -108,9 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 dayDiv.classList.add("today");
             }
 
-            if (eventSchedule[dateKey]) {
+            if (defaultEvents[dateKey]) {
                 let eventList = document.createElement("ul");
-                eventSchedule[dateKey].forEach((event, index) => {
+                defaultEvents[dateKey].forEach(event => {
                     let listItem = document.createElement("li");
                     let calendarLink = generateGoogleCalendarLink(event.name, dateKey, event.time, event.location);
                     listItem.innerHTML = `
@@ -118,7 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             ${event.name} - ${event.time}
                         </a>
                         <br><small>📍 ${event.location}</small>
-                        <button onclick="editEvent('${dateKey}', ${index})">✏️ Edit</button>
                     `;
                     eventList.appendChild(listItem);
                 });
@@ -137,7 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
         let params = new URLSearchParams({
             text: eventName,
             dates: formattedDateTime,
-            details: "Planned via Our Cute Planner 💖",
         });
 
         if (eventLocation) {
@@ -149,61 +137,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /*** 📅 Function to Format Date & Time for Google Calendar ***/
     function formatGoogleCalendarDateTime(eventDate, eventTime) {
-        let [year, month, day] = eventDate.split("-");
-        let eventDateTime = new Date(year, month - 1, day);
-
+        let [year, month, day] = eventDate.split("-"); // Extract YYYY-MM-DD
+        let eventDateTime = new Date(year, month - 1, day); // Create local date (month is 0-based)
+    
         if (eventTime !== "All Day") {
             let [hour, minutePart] = eventTime.split(":");
-            let minute = minutePart.replace(/\D/g, "");
+            let minute = minutePart.replace(/\D/g, ""); // Extract minutes
             let isPM = /PM/.test(eventTime);
             hour = parseInt(hour);
-
+    
             if (isPM && hour < 12) hour += 12;
             if (!isPM && hour === 12) hour = 0;
-
-            eventDateTime.setHours(hour, parseInt(minute), 0, 0);
+    
+            eventDateTime.setHours(hour, parseInt(minute), 0, 0); // Set local hours
         } else {
-            eventDateTime.setHours(0, 0, 0, 0);
+            eventDateTime.setHours(0, 0, 0, 0); // Midnight for all-day event
         }
-
+    
+        // Ensure Google Calendar gets correct format (YYYYMMDDTHHmmSS)
         let formattedStart = eventDateTime.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
         let endDateTime = new Date(eventDateTime);
-        endDateTime.setHours(eventDateTime.getHours() + 1);
+        endDateTime.setHours(eventDateTime.getHours() + 1); // Default 1-hour duration
         let formattedEnd = endDateTime.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
-
+    
         return `${formattedStart}/${formattedEnd}`;
     }
 
-    /*** ✏️ Function to Edit Events ***/
-    window.editEvent = function(dateKey, index) {
-        let newTime = prompt("Enter new time (e.g., 7:30 PM):");
-        if (newTime) {
-            const timeRegex = /^(1[0-2]|0?[1-9]):([0-5][0-9])\s?(AM|PM)$/i;
-            if (timeRegex.test(newTime)) {
-                eventSchedule[dateKey][index].time = newTime;
-                localStorage.setItem("eventSchedule", JSON.stringify(eventSchedule));
-                populateWeeklyPlanner();
-                populateMonthlyPlanner();
-            } else {
-                alert("Incorrect time format. Please enter a time such as: 3:00 PM.");
-            }
-        }
-    };
-
-    /*** 🔄 Function to Toggle Between Views ***/
+    /*** 🔄 Function to Toggle Between Views (Defaults to Monthly) ***/
     toggleButton.addEventListener("click", () => {
-        weekView.style.display = weekView.style.display === "none" ? "flex" : "none";
-        monthView.style.display = monthView.style.display === "none" ? "grid" : "none";
-        toggleButton.textContent = weekView.style.display === "none" ? "Switch to Weekly View" : "Switch to Monthly View";
+        if (weekView.style.display === "none") {
+            weekView.style.display = "flex";
+            monthView.style.display = "none";
+            toggleButton.textContent = "Switch to Monthly View";
+        } else {
+            weekView.style.display = "none";
+            monthView.style.display = "grid";
+            toggleButton.textContent = "Switch to Weekly View";
+        }
     });
 
-    /*** 🎀 Expanding Navigation Menu ***/
-    const menuButton = document.querySelector(".menu-button");
-    const navMenu = document.querySelector(".nav-menu");
-
-    menuButton.addEventListener("click", () => {
-        navMenu.classList.toggle("active");
-    });
+    // ✅ Default view is Monthly
+    weekView.style.display = "none";
+    monthView.style.display = "grid";
 
     populateWeeklyPlanner();
     populateMonthlyPlanner();
