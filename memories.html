@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memories Timeline</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+    <header class="header-with-buttons">
+        <h1>Memories</h1>
+        <div class="header-buttons">
+            <a href="home.html" class="home-button">🏠 Back to Home</a>
+        </div>
+    </header>
+
+    <section class="timeline">
+        <div class="timeline-container">
+            <div class="timeline-item" onclick="showMemory(0)">
+                <span class="timeline-label">2/22/2022: First Date</span>
+            </div>
+            <div class="timeline-item" onclick="showMemory(1)">
+                <span class="timeline-label">2/26/2022: Blue Owl</span>
+            </div>
+            <div class="timeline-item" onclick="showMemory(2)">
+                <span class="timeline-label">3/19/2022: Hometown Visit</span>
+            </div>
+            <div class="timeline-item" onclick="showMemory(3)">
+                <span class="timeline-label">4/17/2022: Library Sessions</span>
+            </div>
+            <div class="timeline-item" onclick="showMemory(4)">
+                <span class="timeline-label">5/20/2022: KASA Formal</span>
+            </div>
+            <div class="timeline-item" onclick="showMemory(5)">
+                <span class="timeline-label">6/15/2022: San Francisco</span>
+            </div>
+            <div class="timeline-item" onclick="showMemory(6)">
+                <span class="timeline-label">6/23/2022: Mount Shasta</span>
+            </div>
+            <div class="timeline-item" onclick="showMemory(7)">
+                <span class="timeline-label">9/8/2022: Second Visit</span>
+            </div>
+            <div class="timeline-item" onclick="showMemory(8)">
+                <span class="timeline-label">12/11/2022: Big Bear</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="memory-display" style="display: none;"> 
+        <img id="memory-image" src="" alt="A Special Moment">
+        <div id="memory-caption" class="caption"></div>
+    </section>
+
+    <script>
+        const memories = [
+            {
+                image: "memories/firstdate.jpeg", // Replace with actual image path
+                caption: "First Date - 2/22/2022 - I know we hung out together befor this (and got empty bowl before this), but this was our first real date. On 2/22/22 at 2:22! I was so nervous even though I looked so nonchalant."
+            },
+            {
+                image: "memories/blueowl.jpeg", // Replace with actual image path
+                caption: "Blue Owl - 2/26/2022 - This was an awesome night because it was so unexpected. We wandered around and ended up at a really cool place with live music and it just showed me that it didn't matter where we were, we could always find a way to have fun and make the most of our time."
+            },
+            {
+                image: "memories/hometown.jpeg", // Replace with actual image path
+                caption: "Hometown Visit - 3/19/2022 - You visited Lincoln for the first time! I was so excited to show you my hometown. Not pictured: the riverwater Dunkin"
+            },
+            {
+                image: "memories/lib.jpeg", // Replace with actual image path
+                caption: "📚 Library Session - 4/17/2022 -  Throwback to all our late night library sessions. It was definitely not the healthiest thing to stay up until like 3 am every other night but I had so much fun spending time with you during those times. Let's do it again please?"
+            },
+            {
+                image: "memories/kasa.jpeg", // Replace with actual image path
+                caption: "🕺 KASA Formal - 5/20/2022 - We look so good in formal attire. Shoutout to KASA before all the madness!"
+            },
+            {
+                image: "memories/sf.jpeg", // Replace with actual image path
+                caption: "🌉 San Francisco - 6/15/2022 - I loved this day, we got dim sum and explored the pier. So much love!"
+            },
+            {
+                image: "memories/shasta.jpeg", // Replace with actual image path
+                caption: "🗻 Mount Shasta - 6/23/2022 - What a fun trip this was. Even though I wish it was just us, I'm glad you got to bond with my family and I felt like we all became a lot closer during this trip (minus Allen)."
+            },
+            {
+                image: "memories/second.JPG", // Replace with actual image path
+                caption: "🗻 Second Visit - 9/8/2022 - When you came to visit the second time! I missed you the whole summer. We ate such good Korean food and went to the Japanese tea garden!"
+            },
+            {
+                image: "memories/bigbear.JPG", // Replace with actual image path
+                caption: "🗻 Big Bear - 12/11/2022 - What a fun way to celebrate my birthday. I loved being in a cabin in the mountains with you, especially since we got so much snow!"
+            }
+        ];
+
+        function showMemory(index) {
+            const memoryDisplay = document.querySelector(".memory-display");
+            const memoryImage = document.getElementById("memory-image");
+            const memoryCaption = document.getElementById("memory-caption");
+
+            memoryImage.src = memories[index].image;
+            memoryCaption.innerHTML = memories[index].caption;
+
+            memoryDisplay.style.display = "block"; 
+        }
+    </script>
+
+</body>
+</html>
