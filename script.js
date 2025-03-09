@@ -14,11 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
         "2025-03-10": [{ name: "Sunset Walk", time: "6:00 PM", location: "Secret" }],
         "2025-03-11": [{ name: "Gym", time: "2:00 PM", location: "Rec Cen" }],
         "2025-03-12": [
-            { name: "Cooking You Dinner", time: "6:00 PM", location: "851 Camino Pescadero" },
+            { name: "Cooking Dinner & Watching Drag Race", time: "6:00 PM", location: "851 Camino Pescadero" },
             { name: "Gym", time: "2:00 PM", location: "Rec Cen" }
         ],
         "2025-03-13": [{ name: "Gym", time: "2:00 PM", location: "Rec Cen" }],
-        "2025-03-14": [{ name: "Weekly Talk", time: "5:00 PM", location: "851 Camino Pescadero" }],
+        "2025-03-14": [
+            { name: "Weekly Talk", time: "5:00 PM", location: "851 Camino Pescadero" },
+            { name: "Cooking Dinner & Watching Movie", time: "5:30 PM", location: "851 Camino Pescadero" }
+        ],
         "2025-03-15": [{ name: "Date Night", time: "5:30 PM", location: "Secret" }],
         "2025-03-16": [{ name: "Study Session", time: "10:00 AM", location: "Library" }],
         "2025-03-17": [{ name: "Gym", time: "12:00 PM", location: "Rec Cen" }],
