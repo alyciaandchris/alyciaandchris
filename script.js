@@ -31,8 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
         "2025-03-21": [{ name: "Weekly Talk", time: "5:00 PM", location: "FaceTime" }],
         "2025-03-22": [{ name: "Movie", time: "4:00 PM", location: "Teleparty" }],
         "2025-03-24": [{ name: "Movie", time: "4:00 PM", location: "Teleparty" }],
-        "2025-03-26": [{ name: "Movie", time: "4:00 PM", location: "Teleparty" }],
-        "2025-03-28": [{ name: "Weekly Talk", time: "5:00 PM", location: "FaceTime" }]
+        "2025-03-27": [
+            { name: "Weekly Talk", time: "5:00 PM", location: "FaceTime" },
+            { name: "Movie", time: "5:30 PM", location: "Teleparty" }
+        ],
+        "2025-03-28": [{ name: "Show", time: "4:00 PM", location: "Teleparty" }],
+        "2025-03-31": [{ name: "Move", time: "6:00 PM", location: "Teleparty" }]
     };
 
     /*** 🗓️ Function to Populate the Weekly Planner ***/
