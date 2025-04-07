@@ -7,36 +7,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ✅ Event Schedule - Now automatically updates when you modify this object!
     const defaultEvents = {
-        "2025-03-03": [{ name: "Dinner Date", time: "5:00 PM", location: "Lal Mirch" }],
-        "2025-03-04": [{ name: "Apartment cleanup", time: "2:00 PM", location: "6512 Segovia" }],
-        "2025-03-05": [{ name: "Gym", time: "8:00 AM", location: "Rec Cen" }],
-        "2025-03-07": [{ name: "Weekly Talk", time: "8:00 AM", location: "851 Camino Pescadero" }], 
-        "2025-03-10": [{ name: "Sunset Walk", time: "6:00 PM", location: "Secret" }],
-        "2025-03-11": [{ name: "Gym", time: "2:00 PM", location: "Rec Cen" }],
-        "2025-03-12": [
-            { name: "Cooking Dinner & Watching Drag Race", time: "6:00 PM", location: "851 Camino Pescadero" },
-            { name: "Gym", time: "2:00 PM", location: "Rec Cen" }
-        ],
-        "2025-03-13": [{ name: "Gym", time: "2:00 PM", location: "Rec Cen" }],
-        "2025-03-14": [
-            { name: "Weekly Talk", time: "5:00 PM", location: "851 Camino Pescadero" },
-            { name: "Cooking Dinner & Watching Movie", time: "5:30 PM", location: "851 Camino Pescadero" }
-        ],
-        "2025-03-15": [{ name: "Date Night", time: "5:30 PM", location: "Secret" }],
-        "2025-03-16": [{ name: "Study Session", time: "10:00 AM", location: "Library" }],
-        "2025-03-17": [{ name: "Gym", time: "12:00 PM", location: "Rec Cen" }],
-        "2025-03-18": [{ name: "Study Session", time: "10:00 AM", location: "Library" }],
-        "2025-03-19": [{ name: "Dinner Date", time: "6:00 PM", location: "Empty Bowl" }],
-        "2025-03-20": [{ name: "Flight", time: "10:30 AM", location: "SBA" }],
-        "2025-03-21": [{ name: "Weekly Talk", time: "5:00 PM", location: "FaceTime" }],
-        "2025-03-22": [{ name: "Movie", time: "4:00 PM", location: "Teleparty" }],
-        "2025-03-24": [{ name: "Movie", time: "4:00 PM", location: "Teleparty" }],
-        "2025-03-27": [
-            { name: "Weekly Talk", time: "5:00 PM", location: "FaceTime" },
-            { name: "Movie", time: "5:30 PM", location: "Teleparty" }
-        ],
-        "2025-03-28": [{ name: "Show", time: "4:00 PM", location: "Teleparty" }],
-        "2025-03-31": [{ name: "Move", time: "6:00 PM", location: "Teleparty" }]
+        "2025-04-03": [{ name: "Flight Arrives", time: "5:50 PM", location: "Airport" }],
+        "2025-04-06": [{ name: "Cook Dinner", time: "6:00 PM", location: "Your Apt" }],
+        "2025-04-07": [{ name: "Gyn", time: "10:00 AM", location: "Rec Cen" }],
+        "2025-04-08": [{ name: "Gym", time: "2:00 PM", location: "Rec Cen" },
+            { name: "Weekly Talk", time: "1:00 PM", location: "Car Ride" }],
+        "2025-04-09": [{ name: "Gym", time: "2:00 PM", location: "Rec Cen" },
+            { name: "Date Night", time: "5:00 PM", location: "Surprise" }],
+        "2025-04-10": [{ name: "Date Night", time: "5:00 PM", location: "Surprise" }],
+        "2025-04-13": [{ name: "Comedy Show", time: "7:00 PM", location: "LA" },
+            { name: "Lunch Date", time: "1:00 PM", location: "K-Town" }]
     };
 
     /*** 🗓️ Function to Populate the Weekly Planner ***/
@@ -101,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         for (let day = 1; day <= lastDayOfMonth.getDate(); day++) {
-            let dateKey = `${currentYear}-03-${String(day).padStart(2, '0')}`;
+            let dateKey = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
             let dayDiv = document.createElement("div");
             dayDiv.classList.add("month-day");
             dayDiv.innerHTML = `<h3>${day}</h3>`;
